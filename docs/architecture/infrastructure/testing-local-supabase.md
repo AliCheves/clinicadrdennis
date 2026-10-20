@@ -3,7 +3,7 @@ title: Supabase local para desarrollo y pruebas
 status: implementado
 scope: supabase/config.toml, scripts db:start y db:stop
 last_updated: 2026-10-20
-verified_commit: pendiente
+verified_commit: 7a0ba5b
 ---
 
 # Supabase local para desarrollo y pruebas
