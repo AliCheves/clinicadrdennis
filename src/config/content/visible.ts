@@ -46,3 +46,7 @@ export function formatearHora(hhmm: string): string {
   const h12 = h % 12 === 0 ? 12 : h % 12;
   return `${h12}:${String(m).padStart(2, "0")} ${sufijo}`;
 }
+
+export function etiquetaDia(dia: string): string {
+  return dia.charAt(0).toUpperCase() + dia.slice(1);
+}
