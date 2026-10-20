@@ -20,6 +20,23 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 
 ---
 
+## 2026-10-20 — Fase 0 implementada: landing, Supabase local y CI
+
+- Auditoría de solo lectura entregada y aprobada por Alí, con las decisiones D1 a D8 ([[fase-0-auditoria]]). Alí hizo el primer commit en `main`; el trabajo va en `feature/fase-0-cimientos`.
+- App Next.js 16 (App Router, TypeScript, Tailwind 4, ESLint) con la estructura de `AGENTS.md`, puertas vacías por módulo, `.env.example` sin valores y `.nvmrc` con Node 24. `agentRules: false` evita que `next dev` reescriba `AGENTS.md`.
+- Landing pública `/`, `/privacidad` y `/terminos` ([[landing]]):
+  - Todos los datos del consultorio con `confirmado: false`, así que la página muestra "Información en actualización" y lleva `noindex`.
+  - Teléfono y WhatsApp sin valor hasta resolver [[0011-numero-whatsapp-coexistencia]]; el número del consultorio no aparece en el código.
+  - Borradores legales con aviso visible y responsable "Pendiente de confirmar".
+  - Sin analítica, cookies ni recursos de terceros.
+- Supabase local con la CLI como dependencia de desarrollo, en puertos 554xx para convivir con el del autódromo ([[testing-local-supabase]]). Sin esquema.
+- Pruebas:
+  - Vitest para el filtro de datos confirmados.
+  - Playwright a 375 px: carga sin errores, sin scroll horizontal, axe WCAG A/AA en claro y oscuro, sin terceros, `noindex` y ningún dato sin confirmar en el HTML.
+  - CI en GitHub Actions en cada PR, con un trabajo aparte de Playwright (solo Chromium, con caché).
+- Despliegue pendiente: Alí conecta Vercel Hobby siguiendo [[runbook-desplegar-landing]]. Hobby es solo para uso no comercial; hay que pasar a Pro u otro host antes de atender pacientes reales ([[environments-and-accounts]]).
+- Enlaces: [[fase-0-cimientos]] [[landing]] [[testing-local-supabase]] [[runbook-desplegar-landing]]
+
 ## 2026-10-20 — Portafolio de Meta creado, vault y prompts
 
 - En la clínica: el número de WhatsApp es estándar; se indicó pasarlo a WhatsApp Business. Queda por confirmar si se hizo y si es el número personal del doctor o una línea del consultorio.

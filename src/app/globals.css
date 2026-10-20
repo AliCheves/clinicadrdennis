@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* Tokens de color. Contraste AA verificado con axe en tests/e2e. */
+:root {
+  --color-fondo: #f7f5f1;
+  --color-superficie: #ffffff;
+  --color-texto: #1f1d1a;
+  --color-texto-suave: #57534e;
+  --color-borde: #d9d4cc;
+  --color-acento: #0f5257;
+  --color-acento-texto: #ffffff;
+  --color-acento-hover: #0b3f43;
+  --color-aviso-fondo: #fdf3d8;
+  --color-aviso-borde: #b7791f;
+  --color-aviso-texto: #5c3d0a;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-fondo: #171513;
+    --color-superficie: #201d1a;
+    --color-texto: #ece8e1;
+    --color-texto-suave: #b5aea6;
+    --color-borde: #3a3530;
+    --color-acento: #7cc4c4;
+    --color-acento-texto: #0b1f20;
+    --color-acento-hover: #9dd6d6;
+    --color-aviso-fondo: #2b2210;
+    --color-aviso-borde: #c9922e;
+    --color-aviso-texto: #f3dca6;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-fondo: #171513;
+  --color-superficie: #201d1a;
+  --color-texto: #ece8e1;
+  --color-texto-suave: #b5aea6;
+  --color-borde: #3a3530;
+  --color-acento: #7cc4c4;
+  --color-acento-texto: #0b1f20;
+  --color-acento-hover: #9dd6d6;
+  --color-aviso-fondo: #2b2210;
+  --color-aviso-borde: #c9922e;
+  --color-aviso-texto: #f3dca6;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-fondo: var(--color-fondo);
+  --color-superficie: var(--color-superficie);
+  --color-texto: var(--color-texto);
+  --color-texto-suave: var(--color-texto-suave);
+  --color-borde: var(--color-borde);
+  --color-acento: var(--color-acento);
+  --color-acento-texto: var(--color-acento-texto);
+  --color-acento-hover: var(--color-acento-hover);
+  --color-aviso-fondo: var(--color-aviso-fondo);
+  --color-aviso-borde: var(--color-aviso-borde);
+  --color-aviso-texto: var(--color-aviso-texto);
+  --font-titulo: var(--font-source-serif), Georgia, serif;
+  --font-cuerpo: var(--font-atkinson), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-cuerpo);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

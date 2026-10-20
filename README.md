@@ -15,7 +15,17 @@ Asistente de WhatsApp para agendar, confirmar, reprogramar y cancelar citas, con
 
 ## Estado
 
-Ver `docs/log/CHANGELOG.md`. El proyecto está en Fase 0 (cimientos).
+Ver `docs/log/CHANGELOG.md`. Fase 0 (cimientos) implementada; sigue la Fase 0.5 (esquema y panel).
+
+## Comandos
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run lint` / `npm run typecheck` / `npm run build` | Calidad y compilación |
+| `npm test` | Pruebas unitarias (Vitest) |
+| `npm run test:e2e` | Pruebas de la landing (Playwright; la primera vez: `npx playwright install chromium`) |
+| `npm run db:start` / `npm run db:stop` | Supabase local con Docker (ver `docs/architecture/infrastructure/testing-local-supabase.md`) |
 
 ## Para empezar a trabajar con Claude Code
 

@@ -31,6 +31,12 @@ verified_commit: <hash corto o "n/a">
 - `obsoleto`: se conserva por historia y apunta al documento que lo reemplaza.
 - `last_updated` se actualiza cada vez que se edita el archivo.
 
+### `status` en otros tipos de documento
+
+- **Prompt** (`docs/prompts/`): `status` describe el prompt, no la fase. `implementado` quiere decir que el prompt está redactado y listo para pegarse; `en-curso`, que todavía se está escribiendo. El avance de la fase se lee en su plan (`docs/plans/`) y en [[CHANGELOG]].
+- **ADR**: usa sus propios estados (`propuesto`, `aceptado`, `reemplazado`, `rechazado`); ver [[README-decisiones]].
+- **Auditoría** (`docs/plans/<fase>-auditoria.md`): `implementado` desde que se entrega. Es un registro histórico y no se vuelve a editar.
+
 ---
 
 ## Esquema de un documento de módulo o infraestructura
