@@ -2,7 +2,7 @@
 title: Integración con WhatsApp (Meta Cloud API)
 status: planificado
 scope: src/lib/whatsapp/, src/modules/conversation/, src/app/api/whatsapp/
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 verified_commit: n/a
 ---
 
@@ -84,6 +84,12 @@ Reglas: sin información clínica, sin nombre de la especialidad del paciente ni
 
 ## Notas
 
+- **MCP de Meta para WhatsApp Business** (desde 2026-11-25). Está registrado en `.mcp.json` como `whatsapp-business` (`https://mcp.facebook.com/whatsapp_business_tools`). Cada persona inicia sesión con OAuth de Facebook desde `/mcp`; el repositorio no guarda ningún token. Los permisos que pide incluyen `business_management`, `whatsapp_business_management` y `whatsapp_business_messaging`.
+  - Desde Claude Code se usa solo para leer y para editar la información del negocio y el perfil.
+  - Sin aprobación explícita de Alí en ese momento (`AGENTS.md`, regla 8; [[0011-numero-whatsapp-coexistencia]]), no se usa para:
+    - enviar mensajes;
+    - registrar o migrar números;
+    - crear o enviar plantillas.
 - Costos por mensaje: verificar la tarifa vigente de Meta antes de cotizar al doctor.
 - Datos del modo coexistencia (número usado a la vez en la app de WhatsApp Business y en la API): un proveedor lo lista como no disponible solo en Nigeria y Sudáfrica, sin confirmar El Salvador; requiere la app Business 2.24.17 o más reciente; la voz no está disponible en esos números; Meta desconecta el número tras unos 14 días sin abrir la app. Fuente de un proveedor, no de Meta: <https://app.wassenger.com/help/coexistence>. <!-- verify: confirmar en la documentación de Meta y en el alta real del número -->
 - El MCP "WhatsApp Business Tools" de Meta está en beta y sirve para configurar la cuenta (números, plantillas, webhooks), no para correr el bot. Se autentica por OAuth y hay que repetir el inicio de sesión al reiniciar el cliente.
