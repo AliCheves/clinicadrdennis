@@ -2,7 +2,7 @@
 title: Runbook — Desplegar la landing en Vercel
 status: en-curso
 scope: despliegue de la landing pública (Fase 0)
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # Runbook — Desplegar la landing en Vercel
@@ -16,6 +16,18 @@ Pasos para que Alí conecte el repositorio desde su cuenta de Vercel y obtenga l
 - [ ] El PR de la Fase 0 está fusionado en `main` y CI pasó.
 - [ ] Revisaste `src/config/content/clinic.ts`. Lo normal es desplegar primero con todo en `confirmado: false`: la página muestra "Información en actualización" y lleva `noindex`.
 - [ ] Si el doctor ya confirmó nombre, especialidad, dirección y horario, márcalos `confirmado: true` en un commit propio, por PR. Teléfono y WhatsApp siguen en `false` hasta resolver [[0011-numero-whatsapp-coexistencia]].
+
+## Estado
+
+Hecho el 2026-11-25:
+
+- Proyecto `clinicadrdennis`, conectado a `AliCheves/clinicadrdennis`, rama `main`, Node 24.x.
+- Sin variables de entorno.
+- URL de producción: `https://clinicadrdennis.vercel.app`.
+
+Cada fusión a `main` despliega sola.
+
+> **Cuidado al importar.** Si Vercel ofrece "Clone" o crear un repositorio nuevo, **no** lo aceptes: crea una copia del código en otro repositorio y los cambios de `clinicadrdennis` dejan de desplegarse. El 2026-11-25 pasó así: se creó `AliCheves/dashdrdennis` como copia. Se corrigió renombrando el proyecto y conectándolo al repositorio correcto. Si el repositorio no aparece al importar, dale acceso en GitHub → Settings → Applications → Vercel → **Configure** → Repository access.
 
 ## Conectar el repositorio
 
