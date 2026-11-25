@@ -2,7 +2,7 @@
 title: Entornos y registro de cuentas
 status: en-curso
 scope: cuentas y servicios externos del proyecto
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 verified_commit: n/a
 ---
 
@@ -23,7 +23,7 @@ Registro de cada cuenta o servicio, de quién es y en qué estado está. Las cue
 | Usuario del sistema de Meta | Portafolio del doctor | Alí | Pendiente | Gestor de contraseñas y `WHATSAPP_ACCESS_TOKEN` en el host | Rotación: [[runbook-rotar-token]] |
 | Google (calendario) | Doctor | Doctor; secretaria y Alí con edición | Por confirmar cuenta y dueño | `GOOGLE_REFRESH_TOKEN` en el host | Ver [[google-calendar-sync]] |
 | Supabase | Doctor | Alí | Pendiente | Variables del host y gestor | Elegir región y plan |
-| Hosting de la aplicación | Alí (temporal); doctor al pasar a un plan de pago | Alí | Pendiente: Alí conecta el repositorio a Vercel Hobby desde su cuenta ([[runbook-desplegar-landing]]) | Variables del host (la landing no usa ninguna) | **Hobby es solo para uso no comercial**: sirve para la revisión de Meta con la URL `*.vercel.app`. Antes de atender pacientes reales hay que pasar a Pro u otro host. El código no depende de Vercel. Ver [[0002-runtime-del-backend]] |
+| Hosting de la aplicación | Alí (temporal); doctor al pasar a un plan de pago | Alí | Activo desde 2026-11-25: proyecto Vercel `clinicadrdennis` en el equipo personal de Alí (plan Hobby), conectado a `AliCheves/clinicadrdennis`, rama `main`, Node 24.x. URL: `https://clinicadrdennis.vercel.app` ([[runbook-desplegar-landing]]) | Variables del host (la landing no usa ninguna) | **Hobby es solo para uso no comercial**: sirve para la revisión de Meta con la URL `*.vercel.app`. Antes de atender pacientes reales hay que pasar a Pro u otro host. El código no depende de Vercel. Ver [[0002-runtime-del-backend]] |
 | Resend (correo) | Doctor | Alí | Pendiente | `RESEND_API_KEY` en el host | Ideal con dominio propio |
 | Dominio del consultorio | Doctor | Alí | Pendiente | Registrador | Sirve para la landing, el correo y la verificación de Meta |
 | GitHub (repositorio) | Alí | Alí | Creado: `AliCheves/clinicadrdennis`, primer commit el 2026-10-20 | — | Cuenta de Alí; traspaso al doctor por definir. CI con GitHub Actions en cada PR, sin secretos |

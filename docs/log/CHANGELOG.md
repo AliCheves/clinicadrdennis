@@ -2,7 +2,7 @@
 title: Bitácora del proyecto
 status: en-curso
 scope: todo el proyecto
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # Bitácora del proyecto
@@ -19,6 +19,19 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 ```
 
 ---
+
+## 2026-11-25 — Landing desplegada en Vercel
+
+- PR #1 de la Fase 0 fusionado en `main`.
+- Proyecto de Vercel `clinicadrdennis` (plan Hobby) conectado a `AliCheves/clinicadrdennis`, rama `main`, Node 24.x, sin variables de entorno. URL: `https://clinicadrdennis.vercel.app`.
+- Incidente menor: al importar, Vercel creó un repositorio copia (`AliCheves/dashdrdennis`) y un proyecto con ese nombre, con Node 26.x. Se renombró el proyecto, se conectó al repositorio correcto, se fijó Node 24.x y se desplegó desde `main`. El repositorio copia queda para que Alí lo archive. El aviso quedó en [[runbook-desplegar-landing]].
+- Verificado en vivo:
+  - `/`, `/privacidad`, `/terminos` y `/robots.txt` responden 200.
+  - `noindex, nofollow` y aviso de borrador visibles.
+  - Ningún dato sin confirmar, sin recursos de terceros ni cookies.
+- Herramientas de Alí: CLI de Vercel y plugin de Vercel para Claude Code, a nivel de usuario. El MCP de Vercel está registrado y falta autorizarlo. La telemetría del plugin solo envía uso diario y nombres de skills (se apaga con `VERCEL_PLUGIN_TELEMETRY=off`).
+- Pendiente: poner la URL en Meta y confirmar los datos del consultorio con el doctor. Hobby es solo para uso no comercial: hay que pasar a Pro u otro host antes de atender pacientes reales.
+- Enlaces: [[runbook-desplegar-landing]] [[environments-and-accounts]] [[landing]]
 
 ## 2026-10-20 — Fase 0 implementada: landing, Supabase local y CI
 
