@@ -18,7 +18,7 @@ Pasos para dejar la cuenta lista, en el orden que evita cerrar puertas. El núme
 
 ## Antes de tocar el número
 
-- [ ] Confirmar con el doctor si el número es su número personal o una línea del consultorio.
+- [x] Confirmar con el doctor si el número es su número personal o una línea del consultorio. **2026-11-25**: es una línea del consultorio, no el número personal ([[0011-numero-whatsapp-coexistencia]]).
 - [ ] Respaldar los chats del WhatsApp actual.
 - [ ] Pasar el número a WhatsApp Business (instalar la app, verificar el mismo número y aceptar la migración).
 - [ ] Doctor crea el portafolio de negocio de Meta con su Facebook. **Hecho el 2026-10-20**: "Clínica de Reumatología Dr. Dennis Flores".
@@ -43,6 +43,7 @@ Pasos para dejar la cuenta lista, en el orden que evita cerrar puertas. El núme
 
 ## Decisión sobre el número real
 
+- [ ] **No registrar el número con el MCP de WhatsApp**: no admite coexistencia y lo saca de la app del teléfono. La coexistencia se hace con Embedded Signup como Tech Provider o mediante un BSP, y requiere el webhook de la Fase 1.
 - [ ] Ver si Meta ofrece el modo coexistencia para +503 durante el alta.
 - [ ] Si no, elegir entre un número nuevo para el bot o pasar el actual a la API con bandeja de respuestas en el panel.
 - [ ] No registrar el número real en la API hasta decidirlo.
