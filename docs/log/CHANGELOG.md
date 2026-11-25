@@ -20,6 +20,12 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 
 ---
 
+## 2026-11-25 — MCP de Meta para WhatsApp Business
+
+- Se añadió `.mcp.json` con el servidor `whatsapp-business` (`https://mcp.facebook.com/whatsapp_business_tools`). El login es OAuth y no hay secretos en el repositorio.
+- Uso permitido desde Claude Code: leer, y editar la información del negocio y el perfil. Enviar mensajes, registrar números o crear plantillas requiere aprobación explícita de Alí (`AGENTS.md`, regla 8).
+- Enlaces: [[whatsapp-integration]] [[0011-numero-whatsapp-coexistencia]]
+
 ## 2026-11-25 — Landing desplegada en Vercel
 
 - PR #1 de la Fase 0 fusionado en `main`.
