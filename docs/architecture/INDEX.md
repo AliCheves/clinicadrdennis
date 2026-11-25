@@ -10,7 +10,7 @@ verified_commit: n/a
 
 Punto de entrada único a la documentación. El sistema permite a los pacientes agendar, consultar, reprogramar y cancelar citas por WhatsApp, envía recordatorios por WhatsApp y correo, y da al doctor y a la secretaria un panel web. Google Calendar es la agenda única: la secretaria también agenda a mano allí. Es un monolito modular ([[0001-monolito-modular]]) con PostgreSQL en Supabase, la API de WhatsApp Cloud de Meta, Google Calendar y Resend para correo.
 
-Estado general: Fase 0 (cimientos). Todo lo de abajo está `planificado` hasta que exista código; cada documento lo indica en su frontmatter.
+Estado general: Fase 0 (cimientos) implementada en la rama `feature/fase-0-cimientos`: app Next.js, landing pública, Supabase local y CI. Lo demás sigue `planificado`; cada documento lo indica en su frontmatter.
 
 ---
 
@@ -19,6 +19,8 @@ Estado general: Fase 0 (cimientos). Todo lo de abajo está `planificado` hasta q
 - **"¿Qué pidió el doctor y por qué el sistema es así?"** → [[respuestas-doctor-cuestionario]] → [[0001-monolito-modular]]
 - **"¿Qué decisiones están cerradas?"** → [[README-decisiones]]
 - **"¿Qué tablas hay?"** → [[supabase-schema]]
+- **"¿Qué muestra el sitio público?"** → [[landing]] → [[runbook-desplegar-landing]]
+- **"¿Cómo levanto la base de datos local?"** → [[testing-local-supabase]]
 - **"¿Cómo se conecta WhatsApp?"** → [[whatsapp-integration]] → [[runbook-meta-whatsapp-setup]]
 - **"¿Cómo se sincroniza con Google Calendar?"** → [[google-calendar-sync]]
 - **"¿Cómo salen los recordatorios?"** → [[reminders]]
@@ -45,6 +47,8 @@ Estado general: Fase 0 (cimientos). Todo lo de abajo está `planificado` hasta q
 | [[security-and-privacy]] | Clasificación de datos, cifrado del DUI, roles, auditoría, retención | planificado |
 | [[environments-and-accounts]] | Registro de cuentas, titulares y estado (sin secretos) | en-curso |
 | [[modules-overview]] | Módulos, tablas propias y fronteras | planificado |
+| [[landing]] | Landing pública, filtro de datos confirmados, borradores legales | implementado |
+| [[testing-local-supabase]] | Supabase local con Docker, puertos, regla de nunca contra producción | implementado |
 
 ### Meta
 
@@ -63,6 +67,19 @@ Estado general: Fase 0 (cimientos). Todo lo de abajo está `planificado` hasta q
 | `docs/prompts/` | Prompts de Claude Code, uno por fase, con compuerta de auditoría |
 | `docs/operations/` | Runbooks y plantilla de incidente |
 | `docs/log/` | Bitácora (`CHANGELOG.md`) y notas de sesiones |
+
+---
+
+## Rutas
+
+| Ruta | Grupo | Acceso | Doc | Estado |
+|---|---|---|---|---|
+| `/` | `(public)` | Público | [[landing]] | implementado |
+| `/privacidad` | `(public)` | Público | [[landing]] | implementado (borrador legal) |
+| `/terminos` | `(public)` | Público | [[landing]] | implementado (borrador legal) |
+| `/robots.txt` | raíz | Público | [[landing]] | implementado |
+
+Las rutas de `(auth)`, `(panel)` y `api/` llegan en [[fase-0-5-esquema-y-panel]] y en fases posteriores.
 
 ---
 
@@ -149,4 +166,6 @@ Instrucciones completas en [[CONVENTIONS]]. Resumen: tabla nueva → [[supabase-
 - [[reminders]]
 - [[security-and-privacy]]
 - [[environments-and-accounts]]
+- [[landing]]
+- [[testing-local-supabase]]
 - [[CHANGELOG]]

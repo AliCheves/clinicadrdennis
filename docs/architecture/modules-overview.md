@@ -42,6 +42,7 @@ reminders ──► conversation (solo para enviar plantillas)
 
 ## Notas
 
+- Desde la Fase 0 cada módulo tiene su puerta `src/modules/<módulo>/index.ts`, vacía (`export {};`). Todavía no hay lógica.
 - Cuando un módulo se implemente, cada uno recibe su propio documento con el esquema de [[CONVENTIONS]] y esta tabla se actualiza.
 
 ## Conexiones

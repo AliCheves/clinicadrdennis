@@ -1,6 +1,6 @@
 ---
 title: Fase 0 — Cimientos
-status: planificado
+status: implementado
 scope: repositorio, landing pública, entorno local, CI
 last_updated: 2026-10-20
 ---
@@ -49,9 +49,17 @@ Salen del formulario de Meta del 2026-10-20 y de sus respuestas. Ninguno se publ
 - Entrada en [[CHANGELOG]].
 - Lista de despliegue entregada a Alí.
 
+## Cierre
+
+Implementada el 2026-10-20 en la rama `feature/fase-0-cimientos`, con las decisiones D1 a D8 de [[fase-0-auditoria]]. Queda pendiente: fusionar el PR, que Alí despliegue siguiendo [[runbook-desplegar-landing]] y que el doctor confirme los datos del consultorio.
+
 ## Conexiones
 
 - [[README-planes]]
+- [[fase-0-auditoria]]
+- [[landing]]
+- [[testing-local-supabase]]
+- [[runbook-desplegar-landing]]
 - [[00-fase-0-cimientos]]
 - [[environments-and-accounts]]
 - [[runbook-meta-whatsapp-setup]]

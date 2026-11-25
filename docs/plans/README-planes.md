@@ -17,7 +17,7 @@ Cada fase tiene tres piezas, igual que en el autódromo (auditoría de solo lect
 
 | Fase | Qué entrega | Plan | Estado |
 |---|---|---|---|
-| 0 — Cimientos | Repositorio, vault, landing pública, Supabase local, CI | [[fase-0-cimientos]] | En curso |
+| 0 — Cimientos | Repositorio, vault, landing pública, Supabase local, CI | [[fase-0-cimientos]] | Implementada; PR y despliegue pendientes |
 | 0.5 — Esquema y panel base | Migraciones, RLS, cifrado del DUI, login y panel con datos ficticios | [[fase-0-5-esquema-y-panel]] | Planificada |
 | 1 — Agendar | Bot de agendar, consultar y cancelar; sincronización con Calendar | Por redactar | Planificada |
 | 2 — Recordatorios | Plantillas aprobadas, recordatorios a 2 días y el mismo día, confirmación | Por redactar | Planificada |

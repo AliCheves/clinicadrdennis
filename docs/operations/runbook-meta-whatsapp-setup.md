@@ -22,7 +22,7 @@ Pasos para dejar la cuenta lista, en el orden que evita cerrar puertas. El núme
 - [ ] Respaldar los chats del WhatsApp actual.
 - [ ] Pasar el número a WhatsApp Business (instalar la app, verificar el mismo número y aceptar la migración).
 - [ ] Doctor crea el portafolio de negocio de Meta con su Facebook. **Hecho el 2026-10-20**: "Clínica de Reumatología Dr. Dennis Flores".
-- [ ] Meta exige una URL de sitio web válida para guardar la información del negocio. Usar una página social del consultorio si existe, o la landing de [[fase-0-cimientos]] cuando esté publicada.
+- [ ] Meta exige una URL de sitio web válida para guardar la información del negocio. Usar una página social del consultorio si existe, o la landing de [[fase-0-cimientos]] cuando esté publicada. La landing ya está construida; el despliegue sigue [[runbook-desplegar-landing]], y la política de privacidad queda en `/privacidad`.
 - [ ] Alinear el nombre legal con los documentos: letra por letra. Hoy el formulario dice "Clinica Dr Dennis Flores" sin tilde y el portafolio "Clínica de Reumatología Dr. Dennis Flores".
 - [ ] Agregar a Alí como administrador del portafolio.
 - [ ] Crear la app en developers.facebook.com con el producto WhatsApp, enlazada al portafolio, con Alí como administrador de la app.
@@ -63,3 +63,4 @@ Ver [[2026-10-20-sesion-clinica]].
 - [[0011-numero-whatsapp-coexistencia]]
 - [[runbook-rotar-token]]
 - [[fase-0-cimientos]]
+- [[runbook-desplegar-landing]]
