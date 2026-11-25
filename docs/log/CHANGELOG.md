@@ -20,6 +20,19 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 
 ---
 
+## 2026-11-25 — App de Meta creada y conectada al portafolio
+
+- El perfil del portafolio del doctor en Meta quedó completo: nombre legal, dirección y sitio web `https://clinicadrdennis.vercel.app`. Sigue sin verificar.
+- Con el MCP `meta-devtools` se creó la app "Citas Consultorio Dr Flores" (App ID 1517454403604135, modo desarrollo). Se conectó al portafolio 1671046891334842 y se le agregó el caso de uso WhatsApp Business Messaging.
+- La primera cuenta de Facebook no estaba registrada como desarrolladora; se usó otra cuenta de Alí que administra el portafolio.
+- No se agregó ni registró ningún número y no se enviaron mensajes ([[0011-numero-whatsapp-coexistencia]]).
+- Pendiente:
+  - Verificación del negocio.
+  - Decisión del número.
+  - Webhook.
+  - Usuario del sistema y token permanente ([[runbook-rotar-token]]).
+- Enlaces: [[environments-and-accounts]] [[runbook-meta-whatsapp-setup]] [[whatsapp-integration]]
+
 ## 2026-11-25 — MCP de Meta para WhatsApp Business
 
 - Se añadió `.mcp.json` con el servidor `whatsapp-business` (`https://mcp.facebook.com/whatsapp_business_tools`). El login es OAuth y no hay secretos en el repositorio.

@@ -2,7 +2,7 @@
 title: Runbook — Alta de WhatsApp Business en Meta
 status: en-curso
 scope: portafolio de Meta, app, número, plantillas, webhook
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # Runbook — Alta de WhatsApp Business en Meta
@@ -25,7 +25,7 @@ Pasos para dejar la cuenta lista, en el orden que evita cerrar puertas. El núme
 - [ ] Meta exige una URL de sitio web válida para guardar la información del negocio. Usar una página social del consultorio si existe, o la landing de [[fase-0-cimientos]] cuando esté publicada. La landing ya está construida; el despliegue sigue [[runbook-desplegar-landing]], y la política de privacidad queda en `/privacidad`.
 - [ ] Alinear el nombre legal con los documentos: letra por letra. Hoy el formulario dice "Clinica Dr Dennis Flores" sin tilde y el portafolio "Clínica de Reumatología Dr. Dennis Flores".
 - [ ] Agregar a Alí como administrador del portafolio.
-- [ ] Crear la app en developers.facebook.com con el producto WhatsApp, enlazada al portafolio, con Alí como administrador de la app.
+- [x] Crear la app en developers.facebook.com con el producto WhatsApp, enlazada al portafolio, con Alí como administrador de la app. **Hecho el 2026-11-25**: "Citas Consultorio Dr Flores", App ID 1517454403604135, con WhatsApp Business Messaging, conectada al portafolio.
 - [ ] Aceptar los términos de la API de WhatsApp Business Cloud (lo hace un administrador del negocio).
 
 ## Con el número de pruebas de Meta
