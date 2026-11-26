@@ -20,6 +20,23 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 
 ---
 
+## 2026-11-25 — ADR-0011 aceptado: número solo en la API y bandeja en el panel
+
+- Alí confirmó que el número del consultorio ya está en la app WhatsApp Business desde octubre y que se usa a diario con pacientes.
+- Decisión (opción C): el número pasa solo a la Cloud API, sin coexistencia, y la secretaria responde desde una bandeja de respuestas en el panel. **La bandeja entra al MVP, en la Fase 1.**
+- El número no se registra en la API hasta que el webhook y la bandeja estén listos. El corte se planifica con el doctor y la secretaria y lo autoriza Alí ese día.
+- Documentos actualizados:
+  - [[0011-numero-whatsapp-coexistencia]] (aceptado)
+  - [[README-decisiones]]
+  - [[whatsapp-integration]]
+  - [[environments-and-accounts]]
+  - [[modules-overview]]
+  - [[README-planes]]
+  - [[runbook-meta-whatsapp-setup]]
+  - [[respuestas-doctor-cuestionario]]
+  - [[INDEX]]
+- Enlaces: [[0011-numero-whatsapp-coexistencia]]
+
 ## 2026-11-25 — Número de WhatsApp elegido; coexistencia en estudio
 
 - Alí confirmó que el número del consultorio será el de WhatsApp Business y que no es el personal del doctor. Hoy está activo en la app de WhatsApp.

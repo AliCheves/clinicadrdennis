@@ -2,7 +2,7 @@
 title: Planes y auditorías por fase
 status: en-curso
 scope: docs/plans/
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # Planes y auditorías por fase
@@ -19,7 +19,7 @@ Cada fase tiene tres piezas, igual que en el autódromo (auditoría de solo lect
 |---|---|---|---|
 | 0 — Cimientos | Repositorio, vault, landing pública, Supabase local, CI | [[fase-0-cimientos]] | Implementada; PR y despliegue pendientes |
 | 0.5 — Esquema y panel base | Migraciones, RLS, cifrado del DUI, login y panel con datos ficticios | [[fase-0-5-esquema-y-panel]] | Planificada |
-| 1 — Agendar | Bot de agendar, consultar y cancelar; sincronización con Calendar | Por redactar | Planificada |
+| 1 — Agendar | Bot de agendar, consultar y cancelar; sincronización con Calendar; bandeja de respuestas de la secretaria en el panel ([[0011-numero-whatsapp-coexistencia]]) | Por redactar | Planificada |
 | 2 — Recordatorios | Plantillas aprobadas, recordatorios a 2 días y el mismo día, confirmación | Por redactar | Planificada |
 | 3 — Piloto | Pacientes reales con el consultorio, ajustes, capacitación | Por redactar | Planificada |
 | 4 — Expediente clínico | Expediente y resumen para aseguradoras. Requiere validación legal antes | Por redactar | Planificada |

@@ -2,7 +2,7 @@
 title: Sesión del 2026-10-20 — Alta de cuentas en la clínica
 status: en-curso
 scope: registro de lo hecho en el consultorio
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # Sesión del 2026-10-20 — Alta de cuentas en la clínica
@@ -18,7 +18,7 @@ Alí está en el consultorio con el teléfono del WhatsApp del doctor y su lapto
 
 - [ ] Confirmar el nombre legal del negocio, letra por letra, contra los documentos.
 - [ ] Confirmar si el número es personal del doctor o una línea del consultorio.
-- [ ] Respaldar chats y pasar el número a WhatsApp Business.
+- [x] Respaldar chats y pasar el número a WhatsApp Business. Según Alí, ya está en WhatsApp Business desde octubre (confirmado el 2026-11-25).
 - [ ] Agregar a Alí como administrador del portafolio.
 - [ ] Crear la app de Meta con el producto WhatsApp.
 - [ ] Iniciar la verificación de Meta Business y el método de pago.

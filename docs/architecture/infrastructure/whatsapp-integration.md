@@ -22,7 +22,7 @@ El bot usa la API de WhatsApp Cloud de Meta directamente, sin intermediario ([[0
 | App de desarrollador con producto WhatsApp | Pendiente |
 | Verificación de Meta Business | Pendiente (toma días) |
 | Método de pago | Pendiente |
-| Número del consultorio | Es WhatsApp estándar; falta pasarlo a WhatsApp Business. Decisión sobre coexistencia en [[0011-numero-whatsapp-coexistencia]] |
+| Número del consultorio | Línea del consultorio, no el número personal del doctor. En la app WhatsApp Business desde octubre de 2026 y en uso diario. **No registrado en la API**: pasará solo a la Cloud API cuando el webhook y la bandeja del panel estén listos ([[0011-numero-whatsapp-coexistencia]], opción C) |
 | Plantillas | Pendientes (nombres propuestos abajo) |
 | Webhook | Pendiente; se configura cuando exista un backend desplegado |
 
