@@ -10,7 +10,11 @@ verified_commit: n/a
 
 Punto de entrada único a la documentación. El sistema permite a los pacientes agendar, consultar, reprogramar y cancelar citas por WhatsApp, envía recordatorios por WhatsApp y correo, y da al doctor y a la secretaria un panel web. Google Calendar es la agenda única: la secretaria también agenda a mano allí. Es un monolito modular ([[0001-monolito-modular]]) con PostgreSQL en Supabase, la API de WhatsApp Cloud de Meta, Google Calendar y Resend para correo.
 
-Estado general: Fase 0 (cimientos) implementada en la rama `feature/fase-0-cimientos`: app Next.js, landing pública, Supabase local y CI. Lo demás sigue `planificado`; cada documento lo indica en su frontmatter.
+Estado general:
+
+- **Fase 0 cerrada:** landing desplegada en `clinicadrdennis.vercel.app`.
+- **Fase 0.5 implementada** en `feature/fase-0-5-esquema-y-panel`: esquema con RLS, DUI cifrado y auditado, login por rol y panel con datos ficticios en Supabase local.
+- WhatsApp, Calendar y recordatorios siguen `planificado`; cada documento lo indica en su frontmatter.
 
 ---
 
@@ -21,6 +25,8 @@ Estado general: Fase 0 (cimientos) implementada en la rama `feature/fase-0-cimie
 - **"¿Qué tablas hay?"** → [[supabase-schema]]
 - **"¿Qué muestra el sitio público?"** → [[landing]] → [[runbook-desplegar-landing]]
 - **"¿Cómo levanto la base de datos local?"** → [[testing-local-supabase]]
+- **"¿Qué hace el panel y quién ve qué?"** → [[panel]] → [[supabase-schema]] § RLS
+- **"¿Cómo muestro la demo al doctor?"** → [[guion-demo-doctor]]
 - **"¿Cómo se conecta WhatsApp?"** → [[whatsapp-integration]] → [[runbook-meta-whatsapp-setup]]
 - **"¿Cómo se sincroniza con Google Calendar?"** → [[google-calendar-sync]]
 - **"¿Cómo salen los recordatorios?"** → [[reminders]]
@@ -40,13 +46,14 @@ Estado general: Fase 0 (cimientos) implementada en la rama `feature/fase-0-cimie
 
 | Doc | Cubre | Estado |
 |---|---|---|
-| [[supabase-schema]] | Las 12 tablas, índices, semillas y plan de RLS | planificado |
+| [[supabase-schema]] | Las 12 tablas, índices, semillas y RLS | en-curso |
 | [[whatsapp-integration]] | Cuenta de Meta, número, plantillas, webhook, ventana de 24 h | planificado |
 | [[google-calendar-sync]] | Sincronización en dos vías, avisos push, reserva sin doble cita | planificado |
 | [[reminders]] | Recordatorios a 2 días y el mismo día, idempotencia | planificado |
-| [[security-and-privacy]] | Clasificación de datos, cifrado del DUI, roles, auditoría, retención | planificado |
+| [[security-and-privacy]] | Clasificación de datos, cifrado del DUI, roles, auditoría, retención | en-curso |
 | [[environments-and-accounts]] | Registro de cuentas, titulares y estado (sin secretos) | en-curso |
-| [[modules-overview]] | Módulos, tablas propias y fronteras | planificado |
+| [[modules-overview]] | Módulos, tablas propias y fronteras | en-curso |
+| [[panel]] | Panel del doctor y la secretaria: rutas, roles, DUI auditado | en-curso |
 | [[landing]] | Landing pública, filtro de datos confirmados, borradores legales | implementado |
 | [[testing-local-supabase]] | Supabase local con Docker, puertos, regla de nunca contra producción | implementado |
 
@@ -78,8 +85,16 @@ Estado general: Fase 0 (cimientos) implementada en la rama `feature/fase-0-cimie
 | `/privacidad` | `(public)` | Público | [[landing]] | implementado (borrador legal) |
 | `/terminos` | `(public)` | Público | [[landing]] | implementado (borrador legal) |
 | `/robots.txt` | raíz | Público | [[landing]] | implementado |
+| `/login` | `(auth)` | Público (404 sin Supabase) | [[panel]] | implementado |
+| `/panel` | `(panel)` | Doctor y secretaria | [[panel]] | implementado |
+| `/panel/semana` | `(panel)` | Doctor | [[panel]] | implementado |
+| `/panel/agenda` | `(panel)` | Doctor y secretaria | [[panel]] | implementado (solo lectura) |
+| `/panel/casos` | `(panel)` | Doctor y secretaria | [[panel]] | implementado |
+| `/panel/sin-vincular` | `(panel)` | Doctor y secretaria | [[panel]] | implementado (solo lectura) |
+| `/panel/pacientes` y `/panel/pacientes/[id]` | `(panel)` | Doctor y secretaria (DUI: solo el doctor, auditado) | [[panel]] | implementado |
+| `/panel/conversaciones` | `(panel)` | Doctor y secretaria | [[panel]] | vista previa de solo lectura |
 
-Las rutas de `(auth)`, `(panel)` y `api/` llegan en [[fase-0-5-esquema-y-panel]] y en fases posteriores.
+Las rutas de `api/` (webhook y cron) llegan en la Fase 1 ([[0002-runtime-del-backend]]).
 
 ---
 
@@ -148,6 +163,9 @@ TRANSVERSAL
 | No está confirmado si el número es personal del doctor o una línea del consultorio | Abierto: confirmar antes de migrarlo | [[respuestas-doctor-cuestionario]] |
 | No está confirmado que exista un Excel de pacientes; los datos anteriores están en papel | Abierto | [[respuestas-doctor-cuestionario]] |
 | Datos personales y DUI | Abierto: validación legal pendiente | [[security-and-privacy]] |
+| Autenticación en dos pasos no implementada | Abierto: obligatoria antes de la Fase 3 (datos reales) | [[panel]] |
+| Capacidad de 35 franjas frente a 44 pacientes | Abierto: `slot_capacity = 1` provisional; se pregunta al doctor | [[guion-demo-doctor]] |
+| iCloud desaloja archivos del repositorio y cuelga las herramientas | Mitigado: ver la nota en [[testing-local-supabase]]; conviene sacar el repo de iCloud | [[testing-local-supabase]] |
 
 ---
 
@@ -167,5 +185,7 @@ Instrucciones completas en [[CONVENTIONS]]. Resumen: tabla nueva → [[supabase-
 - [[security-and-privacy]]
 - [[environments-and-accounts]]
 - [[landing]]
+- [[panel]]
 - [[testing-local-supabase]]
+- [[guion-demo-doctor]]
 - [[CHANGELOG]]

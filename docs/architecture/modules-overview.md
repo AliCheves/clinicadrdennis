@@ -1,9 +1,9 @@
 ---
 title: Módulos del monolito
-status: planificado
+status: en-curso
 scope: src/modules/
 last_updated: 2026-11-25
-verified_commit: n/a
+verified_commit: 7755854
 ---
 
 # Módulos del monolito
@@ -16,9 +16,9 @@ El sistema es un monolito modular ([[0001-monolito-modular]]): un solo código b
 
 | Módulo | Qué hace | Tablas propias | Estado |
 |---|---|---|---|
-| `conversation` | Recibe el webhook de WhatsApp, lleva la máquina de estados del chat, envía mensajes, crea casos pendientes y alimenta la bandeja de respuestas de la secretaria ([[0011-numero-whatsapp-coexistencia]]) | `conversations`, `messages`, `handoff_requests` | planificado |
-| `agenda` | Reglas de disponibilidad, cálculo de huecos, reservar, reprogramar, cancelar | `appointment_types`, `availability_rules`, `availability_exceptions`, `appointments` | planificado |
-| `patients` | Pacientes, consentimiento, cifrado y búsqueda por DUI | `patients` | planificado |
+| `conversation` | Recibe el webhook de WhatsApp, lleva la máquina de estados del chat, envía mensajes, crea casos pendientes y alimenta la bandeja de respuestas de la secretaria ([[0011-numero-whatsapp-coexistencia]]) | `conversations`, `messages`, `handoff_requests` | en-curso: lectura de casos y conversaciones, asignar y cambiar estado ([[panel]]) |
+| `agenda` | Reglas de disponibilidad, cálculo de huecos, reservar, reprogramar, cancelar | `appointment_types`, `availability_rules`, `availability_exceptions`, `appointments` | en-curso: fechas en hora local, semana, franjas y lectura de citas ([[panel]]) |
+| `patients` | Pacientes, consentimiento, cifrado y búsqueda por DUI | `patients` | en-curso: búsqueda, ficha y DUI revelado con auditoría ([[panel]]) |
 | `reminders` | Programa y envía recordatorios por WhatsApp y correo, con idempotencia | `reminders` | planificado |
 | `sync` | Sincronización en dos vías con Google Calendar | `calendar_sync_state` | planificado |
 | (transversal) | Personal del panel y auditoría | `staff_users`, `audit_log` | planificado |

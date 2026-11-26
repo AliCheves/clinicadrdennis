@@ -20,6 +20,33 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 
 ---
 
+## 2026-11-25 — Fase 0.5: esquema, RLS, DUI cifrado y panel con datos ficticios
+
+- Auditoría entregada y aprobada por Alí con D1 a D8 ([[fase-0-5-auditoria]]). Trabajo en `feature/fase-0-5-esquema-y-panel`.
+- **Base de datos** ([[supabase-schema]], ahora `en-curso`):
+  - Dos migraciones: 12 tablas con los cambios de la auditoría, más el horario y los tipos de cita del doctor.
+  - RLS por rol. `anon` sin acceso.
+  - Columna del DUI sin `SELECT`; `doctor_get_dui()` registra en la auditoría en la misma transacción; `log_audit()` no se puede suplantar.
+  - 28 pruebas pgTAP.
+- **Cifrado** (`src/lib/crypto/`): AES-256-GCM con IV aleatorio y HMAC-SHA256 para duplicados, con 9 pruebas unitarias.
+- **Login y panel** ([[panel]]):
+  - Supabase Auth con acciones de servidor; `requireStaff()` en cada página y acción.
+  - Pantallas: semana del doctor, agenda, casos (asignar y cambiar estado), sin vincular, pacientes con DUI auditado y vista previa de conversaciones (D4).
+  - `/login` y `/panel` responden 404 sin Supabase (D5), comprobado con un build sin variables.
+- **Semilla de demostración** solo local (`npm run db:demo`): 40 "Paciente de Prueba", unas 120 citas de cinco semanas, recordatorios, 8 conversaciones y 6 casos, con tres barreras.
+- **Pruebas:**
+  - 11 pruebas de Playwright del panel por rol: el DUI no aparece en el HTML de la secretaria, el revelado del doctor queda auditado, 375 px y axe AA.
+  - Trabajo nuevo de CI con Supabase local.
+- **Decisiones:**
+  - [[0002-runtime-del-backend]] aceptado, opción B.
+  - [[0014-panel-base-antes-del-bot]] aceptado.
+- Next.js pasó a 16.4.6 por avisos de seguridad sobre caché y cookies.
+- **Incidente de entorno:** iCloud había desalojado archivos del repositorio (`node_modules`, `.next`, `.git`) y colgaba `tsc`, `npx` y `git push`. Se regeneró y descargó todo; la nota está en [[testing-local-supabase]].
+- **Pendiente:**
+  - Autenticación en dos pasos (TOTP), antes de la Fase 3.
+  - Capacidad por franja y demás preguntas al doctor ([[guion-demo-doctor]]).
+- Enlaces: [[panel]] [[supabase-schema]] [[security-and-privacy]] [[guion-demo-doctor]]
+
 ## 2026-11-25 — ADR-0011 aceptado: número solo en la API y bandeja en el panel
 
 - Alí confirmó que el número del consultorio ya está en la app WhatsApp Business desde octubre y que se usa a diario con pacientes.

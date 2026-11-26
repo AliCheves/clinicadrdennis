@@ -1,8 +1,8 @@
 ---
 title: Fase 0.5 — Esquema y panel base
-status: planificado
+status: en-curso
 scope: supabase/migrations/, src/modules/, src/app/(auth), src/app/(panel)
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # Fase 0.5 — Esquema y panel base
@@ -40,7 +40,19 @@ Construye la base de datos, la seguridad de acceso y un panel funcional para el 
 - Docs de esquema y panel actualizados; [[supabase-schema]] pasa a `en-curso` con `verified_commit`.
 - Entrada en [[CHANGELOG]].
 
+## Estado (2026-11-25)
+
+Implementada en `feature/fase-0-5-esquema-y-panel` con las decisiones D1 a D8 de [[fase-0-5-auditoria]]. Ver [[panel]] y [[supabase-schema]].
+
+Pendiente:
+- Autenticación en dos pasos (TOTP), antes de la Fase 3.
+- Responder la capacidad por franja con el doctor ([[guion-demo-doctor]]).
+
 ## Conexiones
+
+- [[fase-0-5-auditoria]]
+- [[panel]]
+- [[guion-demo-doctor]]
 
 - [[README-planes]]
 - [[01-fase-0-5-esquema-y-panel]]

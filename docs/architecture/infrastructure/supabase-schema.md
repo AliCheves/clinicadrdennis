@@ -1,16 +1,37 @@
 ---
 title: Esquema de base de datos
-status: planificado
-scope: supabase/migrations/ (aún no existe)
-last_updated: 2026-10-20
-verified_commit: n/a
+status: en-curso
+scope: supabase/migrations/, supabase/tests/database/, src/types/database.ts
+last_updated: 2026-11-25
+verified_commit: 7755854
 ---
 
 # Esquema de base de datos
 
 PostgreSQL gestionado en Supabase. Doce tablas: personal del panel, pacientes, tipos de cita, reglas y excepciones de disponibilidad, citas, conversaciones y mensajes, casos pendientes, recordatorios, estado de sincronización con Google Calendar y auditoría. La lista "pacientes de la semana" del doctor es una consulta sobre `appointments`.
 
-Este archivo parte del esquema de la propuesta de proyecto del 2026-10-10. Cuando exista la primera migración, este documento pasa a `en-curso` y la migración manda: si difieren, se corrige este archivo.
+**Estado (2026-11-25):** implementado en las migraciones `supabase/migrations/20261125000001_esquema_base.sql` (tablas, índices, triggers, tipos de cita y horario) y `20261125000002_rls.sql` (RLS, protección del DUI y auditoría). **Las migraciones mandan:** si este documento y ellas difieren, se corrige este documento. Los tipos TypeScript se generan con `npm run db:types` en `src/types/database.ts`.
+
+### Cambios respecto a la propuesta, aprobados en [[fase-0-5-auditoria]] §1
+
+- `appointments.calendar_title`: el título original del evento, para la pantalla "sin vincular".
+- `appointments.created_by` → `staff_users`.
+- `messages.sent_by` → `staff_users`, para la bandeja de la opción C ([[0011-numero-whatsapp-coexistencia]]). Si no es nulo, el mensaje es saliente.
+- `messages.kind` con `CHECK` (`texto`, `boton`, `lista`, `plantilla`).
+- `handoff_requests.resolution_note`, más un `CHECK` que exige `resolved_at` si y solo si el estado es `resuelto`.
+- `patients.source` con `CHECK` (`bot`, `panel`, `importacion`, `semilla`). Además:
+  - `CHECK` de E.164 en los teléfonos y `birth_date <= current_date`;
+  - `dui_encrypted` y `dui_hash` van juntos o ninguno.
+- `staff_users.auth_user_id` → `auth.users` con `on delete cascade`.
+- `audit_log.id` es `identity` en vez de `bigserial`.
+- Índices extra:
+  - `patients(lower(full_name))`;
+  - `appointments(starts_at)`, y uno parcial de las citas sin vincular;
+  - `messages(conversation_id, created_at)`;
+  - casos no resueltos.
+- `updated_at` con el trigger `set_updated_at()` en `patients` y `appointments`.
+
+El SQL de abajo es el de la propuesta, que se conserva como referencia.
 
 ---
 
@@ -216,16 +237,37 @@ Salen de las respuestas del doctor ([[respuestas-doctor-cuestionario]]). `weekda
 | `appointment_types` | `1 primera_vez 30 min`, `2 control 30 min` |
 | `availability_rules` | lunes (1) 13:00–17:30; miércoles (3) 15:00–17:30; jueves (4) 15:00–17:30; viernes (5) 13:00–17:30; sábado (6) 08:00–11:30; todas con `slot_step_min = 30` |
 
-Pendiente: `slot_capacity` y la duración real de los controles, porque 35 espacios por semana no alcanzan para los 44 pacientes que el doctor reporta ([[respuestas-doctor-cuestionario]]).
+Sembradas en la migración con `valid_from = 2026-01-01` y `slot_capacity = 1` provisional (decisión D6). Pendiente: `slot_capacity` y la duración real de los controles, porque 35 espacios por semana no alcanzan para los 44 pacientes que el doctor reporta ([[respuestas-doctor-cuestionario]]).
 
-## Plan de RLS
+## RLS (implementado)
 
-- RLS activo en todas las tablas.
-- Funciones auxiliares `SECURITY DEFINER`: `is_doctor()` e `is_secretary()`, leyendo `staff_users` (mismo patrón que `is_admin()` en el autódromo, para evitar recursión).
-- `staff_users`: lectura propia; el doctor administra.
-- `patients`, `appointments`, `conversations`, `messages`, `handoff_requests`, `reminders`: lectura y escritura para doctor y secretaria. El navegador no consulta estas tablas directamente: pasa por la capa de servidor ([[0010-acceso-a-datos-solo-por-servidor]]).
-- `audit_log`: solo inserción desde el servidor; lectura solo para el doctor.
-- El webhook y el cron usan la clave de servicio, de forma acotada y documentada.
+- RLS activo en las 12 tablas. `anon` no tiene ningún privilegio en `public`.
+- Funciones `SECURITY DEFINER` con `search_path` vacío, que leen `staff_users` por `auth.uid()` y `active`:
+  - `current_staff_role()`
+  - `is_staff()`
+  - `is_doctor()`
+  - `is_secretary()`
+
+| Tabla | doctor | secretaria |
+|---|---|---|
+| `staff_users` | Lee; crea y edita | Lee |
+| `patients` | Lee, crea, edita (sin borrar) | Igual |
+| `patients.dui_encrypted` | Sin `SELECT` para nadie; solo con `doctor_get_dui()` | No |
+| `appointment_types`, `availability_rules`, `availability_exceptions` | Lee y edita | Lee |
+| `appointments` | Lee, crea, edita (sin borrar: se cancela) | Igual |
+| `conversations`, `handoff_requests` | Lee, crea, edita | Igual |
+| `messages` | Lee, crea (sin editar ni borrar) | Igual |
+| `reminders` | Lee | Lee |
+| `calendar_sync_state` | Nada (solo la clave de servicio) | Nada |
+| `audit_log` | Lee | Nada |
+
+Escritura en `audit_log`:
+
+- Nadie inserta, edita ni borra directamente.
+- Se escribe con `log_audit(acción, entidad, id, detalle)`, que fija `actor_id = auth.uid()` y por eso no se puede suplantar.
+- También escribe `doctor_get_dui(paciente)`. Esa función verifica `is_doctor()`, inserta `dui_revelado` y devuelve el DUI cifrado, todo en la misma transacción. El descifrado ocurre en el servidor ([[security-and-privacy]]).
+
+El webhook y el cron usarán la clave de servicio, de forma acotada y documentada (Fase 1).
 
 ## Errores y casos borde
 
@@ -235,7 +277,16 @@ Pendiente: `slot_capacity` y la duración real de los controles, porque 35 espac
 
 ## Pruebas
 
-Por definir en la auditoría de Fase 0.5: pruebas de RLS contra Supabase local con usuarios ficticios de cada rol.
+`supabase/tests/database/rls.test.sql` (pgTAP, `npm run db:test`) tiene 28 pruebas para cinco perfiles: anónimo, autenticado sin rol, personal inactivo, secretaria y doctor. Verifican:
+
+- Lectura y escritura por tabla.
+- La columna del DUI no se puede leer, ni siquiera con `select *`.
+- `doctor_get_dui()` está prohibida para la secretaria.
+- La auditoría registra la identidad del doctor.
+- `audit_log` no se puede editar ni borrar.
+- La secretaria no cambia el horario.
+
+Pasan con la base vacía y con la semilla de demostración. Corren en CI en el trabajo "Base de datos y panel".
 
 ## Notas
 
@@ -245,6 +296,9 @@ Por definir en la auditoría de Fase 0.5: pruebas de RLS contra Supabase local c
 ## Conexiones
 
 - [[INDEX]]
+- [[panel]]
+- [[fase-0-5-auditoria]]
+- [[testing-local-supabase]]
 - [[modules-overview]]
 - [[security-and-privacy]]
 - [[google-calendar-sync]]
