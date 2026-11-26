@@ -2,7 +2,7 @@
 title: Respuestas del doctor al cuestionario
 status: implementado
 scope: requisitos del consultorio; norma para toda decisión de arquitectura
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 fuente: PDF "Preguntas Dr. Denis" contestado por el Dr. Dennis René Flores
 ---
 
@@ -26,7 +26,7 @@ Fuente: el PDF contestado. Las casillas marcadas se leyeron de la imagen del PDF
 | 6 | Anticipación máxima para agendar | Hasta 2 semanas | — | El bot ofrece solo fechas dentro de 14 días |
 | 7 | Cancelar o reprogramar | Con mínimo 24 horas de anticipación | — | Pasado ese límite el bot no cancela: explica que debe llamar y crea un caso pendiente |
 | 8 | Quién agenda | Ambas: a mano y por el asistente | "Necesito que sea Mixto, pero siempre lo realizarán por Calendar" | Sincronización en dos vías con Calendar ([[google-calendar-sync]]) |
-| 9 | Si el bot no resuelve | La secretaria responde desde el mismo número de WhatsApp; el asistente avisa a la secretaria para que escriba al paciente | — | La secretaria debe poder responder desde el número del consultorio: exige coexistencia o una bandeja de respuestas en el panel ([[0011-numero-whatsapp-coexistencia]]) |
+| 9 | Si el bot no resuelve | La secretaria responde desde el mismo número de WhatsApp; el asistente avisa a la secretaria para que escriba al paciente | — | La secretaria debe poder responder desde el número del consultorio: exige coexistencia o una bandeja de respuestas en el panel. **Decidido el 2026-11-25: bandeja en el panel** ([[0011-numero-whatsapp-coexistencia]]) |
 | 10 | Cómo avisar a la secretaria | Mensaje de WhatsApp a su número; panel web con lista de casos pendientes | "Si no es complicado y puede realizarse el panel web sería lo ideal" | Aviso por plantilla de WhatsApp al número de la secretaria y panel de casos pendientes ([[whatsapp-integration]]) |
 | 11 | Número de WhatsApp | Sí, con WhatsApp normal (el mismo personal) | "Existe un número con WhatsApp Estándar que se puede migrar a Business exclusivamente para pacientes" | Pasar el número a WhatsApp Business. Falta confirmar si es el número personal del doctor o una línea del consultorio |
 | 12 | Datos del paciente nuevo | Nombre, teléfono y fecha de nacimiento; nombre, DUI y datos de contacto | "Agregar correo electrónico si posee" | Se piden: nombre, teléfono, fecha de nacimiento, DUI, contacto y correo si tiene. DUI cifrado ([[0009-datos-sensibles]]) |

@@ -2,7 +2,7 @@
 title: Módulos del monolito
 status: planificado
 scope: src/modules/
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 verified_commit: n/a
 ---
 
@@ -16,7 +16,7 @@ El sistema es un monolito modular ([[0001-monolito-modular]]): un solo código b
 
 | Módulo | Qué hace | Tablas propias | Estado |
 |---|---|---|---|
-| `conversation` | Recibe el webhook de WhatsApp, lleva la máquina de estados del chat, envía mensajes, crea casos pendientes | `conversations`, `messages`, `handoff_requests` | planificado |
+| `conversation` | Recibe el webhook de WhatsApp, lleva la máquina de estados del chat, envía mensajes, crea casos pendientes y alimenta la bandeja de respuestas de la secretaria ([[0011-numero-whatsapp-coexistencia]]) | `conversations`, `messages`, `handoff_requests` | planificado |
 | `agenda` | Reglas de disponibilidad, cálculo de huecos, reservar, reprogramar, cancelar | `appointment_types`, `availability_rules`, `availability_exceptions`, `appointments` | planificado |
 | `patients` | Pacientes, consentimiento, cifrado y búsqueda por DUI | `patients` | planificado |
 | `reminders` | Programa y envía recordatorios por WhatsApp y correo, con idempotencia | `reminders` | planificado |
