@@ -15,7 +15,8 @@
     "db:types": "supabase gen types typescript --local --schema public > src/types/database.ts",
     "db:test": "supabase test db",
     "db:seed:demo": "ALLOW_DEMO_SEED=1 node --env-file=.env.local --import tsx scripts/seed-demo.ts",
-    "db:demo": "supabase db reset && npm run db:seed:demo"
+    "db:demo": "supabase db reset && npm run db:seed:demo",
+    "test:e2e:panel": "playwright test -c playwright.panel.config.ts"
   },
   "dependencies": {
     "@date-fns/tz": "1.5.0",
