@@ -13,6 +13,16 @@
   --color-aviso-fondo: #fdf3d8;
   --color-aviso-borde: #b7791f;
   --color-aviso-texto: #5c3d0a;
+  --color-ok-fondo: #e3f1e8;
+  --color-ok-texto: #1d5a35;
+  --color-info-fondo: #e2eef4;
+  --color-info-texto: #1e4b63;
+  --color-alerta-fondo: #fbe9d3;
+  --color-alerta-texto: #7a3e07;
+  --color-peligro-fondo: #f8e1df;
+  --color-peligro-texto: #8a2219;
+  --color-neutro-fondo: #ece8e1;
+  --color-neutro-texto: #4a4540;
   color-scheme: light;
 }
 
@@ -29,6 +39,16 @@
     --color-aviso-fondo: #2b2210;
     --color-aviso-borde: #c9922e;
     --color-aviso-texto: #f3dca6;
+    --color-ok-fondo: #183526;
+    --color-ok-texto: #a9dfbd;
+    --color-info-fondo: #16313f;
+    --color-info-texto: #a8d3ea;
+    --color-alerta-fondo: #3a2610;
+    --color-alerta-texto: #f5c993;
+    --color-peligro-fondo: #3d1714;
+    --color-peligro-texto: #f4b2aa;
+    --color-neutro-fondo: #2c2825;
+    --color-neutro-texto: #cfc8bf;
     color-scheme: dark;
   }
 }
@@ -44,7 +64,17 @@
   --color-acento-hover: #9dd6d6;
   --color-aviso-fondo: #2b2210;
   --color-aviso-borde: #c9922e;
-  --color-aviso-texto: #f3dca6;
+    --color-aviso-texto: #f3dca6;
+  --color-ok-fondo: #183526;
+  --color-ok-texto: #a9dfbd;
+  --color-info-fondo: #16313f;
+  --color-info-texto: #a8d3ea;
+  --color-alerta-fondo: #3a2610;
+  --color-alerta-texto: #f5c993;
+  --color-peligro-fondo: #3d1714;
+  --color-peligro-texto: #f4b2aa;
+  --color-neutro-fondo: #2c2825;
+  --color-neutro-texto: #cfc8bf;
   color-scheme: dark;
 }
 
@@ -60,6 +90,16 @@
   --color-aviso-fondo: var(--color-aviso-fondo);
   --color-aviso-borde: var(--color-aviso-borde);
   --color-aviso-texto: var(--color-aviso-texto);
+  --color-ok-fondo: var(--color-ok-fondo);
+  --color-ok-texto: var(--color-ok-texto);
+  --color-info-fondo: var(--color-info-fondo);
+  --color-info-texto: var(--color-info-texto);
+  --color-alerta-fondo: var(--color-alerta-fondo);
+  --color-alerta-texto: var(--color-alerta-texto);
+  --color-peligro-fondo: var(--color-peligro-fondo);
+  --color-peligro-texto: var(--color-peligro-texto);
+  --color-neutro-fondo: var(--color-neutro-fondo);
+  --color-neutro-texto: var(--color-neutro-texto);
   --font-titulo: var(--font-source-serif), Georgia, serif;
   --font-cuerpo: var(--font-atkinson), system-ui, sans-serif;
 }

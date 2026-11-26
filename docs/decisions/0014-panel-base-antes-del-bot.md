@@ -1,13 +1,13 @@
 ---
 title: ADR-0014 — Construir el panel base antes que el bot
-status: propuesto
+status: aceptado
 fecha: 2026-10-20
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 ---
 
 # ADR-0014 — Construir el panel base antes que el bot
 
-**Estado:** Propuesto
+**Estado:** Aceptado el 2026-11-25: Alí arrancó la Fase 0.5 ([[fase-0-5-auditoria]])
 
 ## Contexto
 

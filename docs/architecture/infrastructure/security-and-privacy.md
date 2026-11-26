@@ -1,9 +1,9 @@
 ---
 title: Seguridad y privacidad
-status: planificado
+status: en-curso
 scope: src/lib/crypto/, RLS, manejo de secretos, retención
-last_updated: 2026-10-20
-verified_commit: n/a
+last_updated: 2026-11-25
+verified_commit: 7755854
 ---
 
 # Seguridad y privacidad
@@ -22,10 +22,18 @@ El sistema guarda datos personales de pacientes de un consultorio médico. Este 
 
 ## Responsabilidades
 
-- Cifrar el DUI con AES-256-GCM; la clave (`PII_ENCRYPTION_KEY`) vive fuera de la base de datos. Guardar además un HMAC (`dui_hash`, con `PII_HASH_KEY`) solo para detectar duplicados.
+- Cifrar el DUI con AES-256-GCM; la clave (`PII_ENCRYPTION_KEY`) vive fuera de la base de datos. Guardar además un HMAC (`dui_hash`, con `PII_HASH_KEY`) solo para detectar duplicados. **Implementado (Fase 0.5):**
+  - `src/lib/crypto/` usa el formato `versión ‖ IV(12) ‖ etiqueta(16) ‖ cifrado`, con IV aleatorio.
+  - Normaliza el DUI a 9 dígitos y exige claves de 32 bytes distintas.
+  - Los errores no incluyen el valor.
+  - Tiene 9 pruebas unitarias.
+- **Implementado:**
+  - La columna `dui_encrypted` no se puede leer con `SELECT` por nadie del lado del cliente.
+  - El doctor la obtiene con `doctor_get_dui()`, que registra `dui_revelado` en `audit_log` en la misma transacción.
+  - La secretaria solo ve "Registrado" o "No registrado" (decisión D3).
 - Pedir consentimiento explícito en el primer mensaje y guardar `consent_at` y `consent_text_version`.
 - Registrar en `audit_log` cada lectura de DUI y cada exportación o cambio sobre datos de pacientes.
-- Exigir autenticación en dos pasos para el doctor y la secretaria.
+- Exigir autenticación en dos pasos para el doctor y la secretaria. **Pendiente:** TOTP de Supabase Auth, obligatorio antes de la Fase 3 (datos reales); decisión D2. En la Fase 0.5 hay login con correo y contraseña y verificación del rol en el servidor.
 
 ## Fronteras
 

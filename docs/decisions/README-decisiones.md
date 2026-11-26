@@ -32,7 +32,7 @@ last_updated: AAAA-MM-DD
 | ADR | Decisión | Estado |
 |---|---|---|
 | [[0001-monolito-modular]] | Monolito modular, no microservicios | Aceptado |
-| [[0002-runtime-del-backend]] | Runtime del backend para webhook y recordatorios | Propuesto |
+| [[0002-runtime-del-backend]] | Runtime del backend: Next.js único con cron de Supabase (opción B) | Aceptado |
 | [[0003-calendar-fuente-de-verdad]] | Google Calendar es la verdad sobre la ocupación | Aceptado |
 | [[0004-bot-determinista-sin-ia]] | Bot determinista con botones y listas, sin IA en el MVP | Aceptado |
 | [[0005-whatsapp-cloud-api-directo]] | WhatsApp Cloud API de Meta directo, con cuentas a nombre del doctor | Aceptado |
@@ -44,14 +44,12 @@ last_updated: AAAA-MM-DD
 | [[0011-numero-whatsapp-coexistencia]] | Número del consultorio solo en la Cloud API, con bandeja de respuestas en el panel (opción C) | Aceptado |
 | [[0012-recordatorios-idempotentes]] | Recordatorios idempotentes | Aceptado |
 | [[0013-documentacion-como-vault]] | Documentación como vault de Obsidian, en español | Aceptado |
-| [[0014-panel-base-antes-del-bot]] | Construir el panel base antes que el bot | Propuesto |
+| [[0014-panel-base-antes-del-bot]] | Construir el panel base antes que el bot | Aceptado |
 
 Las decisiones 0001 a 0012 salen de la propuesta de proyecto del 2026-10-10; se registraron como ADR el 2026-10-20.
 
 ## Decisiones abiertas
 
-- [[0002-runtime-del-backend]]: se decide en la auditoría de la Fase 0.5.
-- [[0014-panel-base-antes-del-bot]]: pendiente de confirmar por Alí.
 
 ## Conexiones
 
