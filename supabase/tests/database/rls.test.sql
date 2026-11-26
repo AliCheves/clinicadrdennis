@@ -50,7 +50,8 @@ reset role;
 select pg_temp.como('00000000-0000-0000-0000-0000000000a1');
 select is(public.is_secretary(), true, 'secretaria: is_secretary()');
 select is(public.is_doctor(), false, 'secretaria: no es doctor');
-select is((select count(*) from public.patients)::int, 2, 'secretaria: ve pacientes');
+select is((select count(*) from public.patients where id in ('10000000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-000000000002'))::int, 2,
+  'secretaria: ve pacientes');
 select throws_ok($$ select dui_encrypted from public.patients $$, '42501', null, 'secretaria: no lee el DUI cifrado');
 select throws_ok($$ select * from public.patients $$, '42501', null, 'secretaria: select * no expone el DUI');
 select throws_ok($$ select public.doctor_get_dui('10000000-0000-0000-0000-000000000001') $$,

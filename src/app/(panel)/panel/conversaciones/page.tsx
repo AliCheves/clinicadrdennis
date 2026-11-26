@@ -32,7 +32,7 @@ export default async function ConversacionesPage({ searchParams }: PageProps<"/p
       {conversaciones.length === 0 ? (
         <p className="text-texto-suave">{t.vacio}</p>
       ) : (
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
           <ul className="divide-y divide-borde self-start rounded-lg border border-borde bg-superficie">
             {conversaciones.map((x) => (
               <li key={x.id}>

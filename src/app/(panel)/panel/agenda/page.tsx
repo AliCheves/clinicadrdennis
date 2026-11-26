@@ -23,11 +23,11 @@ function Cita({ c }: { c: CitaDeSemana }) {
   return (
     <div className="flex min-w-0 flex-col gap-1">
       {c.pacienteId ? (
-        <Link href={`/panel/pacientes/${c.pacienteId}`} className="truncate font-bold underline-offset-4 hover:underline">
+        <Link href={`/panel/pacientes/${c.pacienteId}`} className="font-bold break-words underline-offset-4 hover:underline">
           {c.paciente}
         </Link>
       ) : (
-        <span className="truncate font-bold text-alerta-texto">{c.tituloCalendar ?? panel.agenda.sinVincular}</span>
+        <span className="font-bold break-words text-alerta-texto">{c.tituloCalendar ?? panel.agenda.sinVincular}</span>
       )}
       <span className="flex flex-wrap items-center gap-2">
         {c.tipo && <span className="text-xs text-texto-suave">{c.tipo}</span>}
@@ -51,7 +51,7 @@ export default async function AgendaPage({ searchParams }: PageProps<"/panel/age
       <Encabezado titulo={t.titulo} descripcion={t.descripcion}>
         <NavegarSemana ruta="/panel/agenda" lunes={lunes} />
       </Encabezado>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {agenda.map((d) => (
           <section
             key={d.dia.toISOString()}

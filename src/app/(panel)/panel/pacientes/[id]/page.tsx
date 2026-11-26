@@ -58,7 +58,7 @@ export default async function PacientePage({ params }: PageProps<"/panel/pacient
         ← {t.volver}
       </Link>
       <Encabezado titulo={p.nombre} />
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <section className="rounded-lg border border-borde bg-superficie p-4 lg:col-span-1">
           <dl className="space-y-3">
             {datos.map((d) => (

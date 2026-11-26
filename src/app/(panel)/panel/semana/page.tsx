@@ -52,7 +52,7 @@ export default async function SemanaPage({ searchParams }: PageProps<"/panel/sem
         ))}
       </section>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {dias.map(({ dia, citas: delDia }) => {
           const visibles = delDia.filter((c) => c.estado !== "cancelada");
           return (
@@ -72,16 +72,13 @@ export default async function SemanaPage({ searchParams }: PageProps<"/panel/sem
               ) : (
                 <ul className="divide-y divide-borde">
                   {delDia.map((c) => (
-                    <li
-                      key={c.id}
-                      className={`flex items-start justify-between gap-3 px-4 py-3 ${c.estado === "cancelada" ? "opacity-70" : ""}`}
-                    >
+                    <li key={c.id} className="flex items-start justify-between gap-3 px-4 py-3">
                       <div className="min-w-0">
                         <p className="text-sm tabular-nums text-texto-suave">{hora(c.inicio)}</p>
                         {c.pacienteId ? (
                           <Link
                             href={`/panel/pacientes/${c.pacienteId}`}
-                            className="font-bold underline-offset-4 hover:underline"
+                            className={`font-bold underline-offset-4 hover:underline ${c.estado === "cancelada" ? "text-texto-suave line-through" : ""}`}
                           >
                             {c.paciente}
                           </Link>

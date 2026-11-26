@@ -5,6 +5,7 @@ import { requireStaff } from "@/lib/auth";
 import { createServerSupabase } from "@/lib/supabase";
 import { etiquetaFechaHora } from "@/modules/agenda";
 import { ESTADOS_CASO, listarCasos, type EstadoCaso } from "@/modules/conversation";
+import { formatearTelefono } from "@/modules/patients";
 import { actualizarCaso } from "../actions";
 import { Encabezado } from "../_components/encabezado";
 import { InsigniaCaso } from "../_components/insignia";
@@ -58,7 +59,7 @@ export default async function CasosPage({ searchParams }: PageProps<"/panel/caso
                 <div className="min-w-0 space-y-1">
                   <p className="font-bold">{c.motivo}</p>
                   <p className="text-sm text-texto-suave">
-                    {c.paciente ?? c.telefono} · {etiquetaFechaHora(c.creado)}
+                    {c.paciente ?? formatearTelefono(c.telefono)} · {etiquetaFechaHora(c.creado)}
                   </p>
                   <p className="text-sm">
                     <span className="text-texto-suave">{t.asignado}: </span>

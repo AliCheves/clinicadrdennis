@@ -1,7 +1,7 @@
 // Sesión y rol del personal, verificados en el servidor en cada página y acción (ADR-0010).
 
-import { redirect } from "next/navigation";
-import { createServerSupabase } from "@/lib/supabase";
+import { notFound, redirect } from "next/navigation";
+import { createServerSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import type { Database } from "@/types/database";
 
 export type StaffRole = Database["public"]["Enums"]["staff_role"];
@@ -30,6 +30,8 @@ export async function getStaff(): Promise<Staff | null> {
 }
 
 export async function requireStaff(roles?: StaffRole[]): Promise<Staff> {
+  // Sin Supabase (por ejemplo, el despliegue de la landing) el panel no existe: 404 (decisión D5).
+  if (!isSupabaseConfigured()) notFound();
   const staff = await getStaff();
   if (!staff) redirect("/login");
   if (roles && !roles.includes(staff.role)) redirect(homeFor(staff.role));
