@@ -90,6 +90,7 @@ Reglas: sin información clínica, sin nombre de la especialidad del paciente ni
     - enviar mensajes;
     - registrar o migrar números;
     - crear o enviar plantillas.
+- **MCP de herramientas de desarrollo de Meta** (desde 2026-11-25). Registrado en `.mcp.json` como `meta-devtools` (`https://mcp.facebook.com/devtools`), con OAuth por persona. Sirve para crear la app de Meta, conectarla al portafolio del doctor, configurar el caso de uso de WhatsApp y revisar App Review. Sus permisos (`developer_tools_mcp_app_read`, `developer_tools_mcp_app_management`, `business_management`) no incluyen mensajería. Cada cambio se muestra a Alí antes de ejecutarlo.
 - Costos por mensaje: verificar la tarifa vigente de Meta antes de cotizar al doctor.
 - Datos del modo coexistencia (número usado a la vez en la app de WhatsApp Business y en la API): un proveedor lo lista como no disponible solo en Nigeria y Sudáfrica, sin confirmar El Salvador; requiere la app Business 2.24.17 o más reciente; la voz no está disponible en esos números; Meta desconecta el número tras unos 14 días sin abrir la app. Fuente de un proveedor, no de Meta: <https://app.wassenger.com/help/coexistence>. <!-- verify: confirmar en la documentación de Meta y en el alta real del número -->
 - El MCP "WhatsApp Business Tools" de Meta está en beta y sirve para configurar la cuenta (números, plantillas, webhooks), no para correr el bot. Se autentica por OAuth y hay que repetir el inicio de sesión al reiniciar el cliente.

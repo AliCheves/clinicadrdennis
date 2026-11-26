@@ -20,6 +20,32 @@ Qué pasó y cuándo, más reciente arriba. Cada fase cerrada, decisión, cuenta
 
 ---
 
+## 2026-11-25 — Número de WhatsApp elegido; coexistencia en estudio
+
+- Alí confirmó que el número del consultorio será el de WhatsApp Business y que no es el personal del doctor. Hoy está activo en la app de WhatsApp.
+- No se registró en la API: el MCP de WhatsApp no admite coexistencia y lo habría sacado de la app.
+- Según la documentación de Meta, la coexistencia exige:
+  - la app WhatsApp Business v2.24.17 o superior;
+  - Embedded Signup implementada por un Tech Provider o Solution Partner;
+  - un webhook funcionando.
+- Siguiente paso manual: pasar el número a la app WhatsApp Business, con respaldo previo de los chats.
+- La forma de conexión se decide en la Fase 1 ([[0011-numero-whatsapp-coexistencia]]).
+- La landing sigue sin mostrar teléfono ni WhatsApp (`confirmado: false`) hasta que Alí decida publicarlos.
+- Enlaces: [[0011-numero-whatsapp-coexistencia]] [[runbook-meta-whatsapp-setup]]
+
+## 2026-11-25 — App de Meta creada y conectada al portafolio
+
+- El perfil del portafolio del doctor en Meta quedó completo: nombre legal, dirección y sitio web `https://clinicadrdennis.vercel.app`. Sigue sin verificar.
+- Con el MCP `meta-devtools` se creó la app "Citas Consultorio Dr Flores" (App ID 1517454403604135, modo desarrollo). Se conectó al portafolio 1671046891334842 y se le agregó el caso de uso WhatsApp Business Messaging.
+- La primera cuenta de Facebook no estaba registrada como desarrolladora; se usó otra cuenta de Alí que administra el portafolio.
+- No se agregó ni registró ningún número y no se enviaron mensajes ([[0011-numero-whatsapp-coexistencia]]).
+- Pendiente:
+  - Verificación del negocio.
+  - Decisión del número.
+  - Webhook.
+  - Usuario del sistema y token permanente ([[runbook-rotar-token]]).
+- Enlaces: [[environments-and-accounts]] [[runbook-meta-whatsapp-setup]] [[whatsapp-integration]]
+
 ## 2026-11-25 — MCP de Meta para WhatsApp Business
 
 - Se añadió `.mcp.json` con el servidor `whatsapp-business` (`https://mcp.facebook.com/whatsapp_business_tools`). El login es OAuth y no hay secretos en el repositorio.

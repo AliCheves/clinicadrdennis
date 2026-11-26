@@ -16,8 +16,8 @@ Registro de cada cuenta o servicio, de quién es y en qué estado está. Las cue
 
 | Servicio | Titular | Administradores | Estado | Dónde vive el secreto | Notas |
 |---|---|---|---|---|---|
-| Portafolio de negocio de Meta | Dr. Dennis René Flores | Doctor; Alí pendiente | Creado 2026-10-20 | Cuenta de Facebook del doctor | Nombre: "Clínica de Reumatología Dr. Dennis Flores". Falta alinear el nombre legal con los documentos |
-| App de Meta (WhatsApp) | Portafolio del doctor | Alí | Pendiente | `WHATSAPP_APP_SECRET` en el host | Alí debe ser administrador de la app, no solo del negocio |
+| Portafolio de negocio de Meta | Dr. Dennis René Flores | Doctor; Alí pendiente | Creado 2026-10-20. Business ID 1671046891334842. Perfil completo (nombre legal, dirección y sitio web) desde 2026-11-25; sin verificar | Cuenta de Facebook del doctor | En Meta figura "Clinica de Reumatologia Dr. Dennis Flores", sin tildes. Falta alinear el nombre legal con los documentos |
+| App de Meta (WhatsApp) | Portafolio del doctor | Alí | Creada 2026-11-25: "Citas Consultorio Dr Flores", App ID 1517454403604135, modo desarrollo, caso de uso WhatsApp Business Messaging, conectada al portafolio | `WHATSAPP_APP_SECRET` en el host (todavía no se ha generado ni copiado) | Creada con el MCP `meta-devtools`. Correo de contacto: el de Alí. Sin número, webhook ni usuario del sistema todavía |
 | Cuenta de WhatsApp Business | Portafolio del doctor | — | Pendiente | — | Ver [[whatsapp-integration]] |
 | Número del consultorio | Doctor | — | WhatsApp estándar; migración a Business pendiente | SIM del doctor | Decisión: [[0011-numero-whatsapp-coexistencia]] |
 | Usuario del sistema de Meta | Portafolio del doctor | Alí | Pendiente | Gestor de contraseñas y `WHATSAPP_ACCESS_TOKEN` en el host | Rotación: [[runbook-rotar-token]] |
