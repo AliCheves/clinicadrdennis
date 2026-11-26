@@ -1,2 +1,30 @@
-// Puerta única del módulo agenda (ADR-0001). Sin implementación todavía.
-export {};
+// Puerta única del módulo agenda (ADR-0001): horario, franjas y citas.
+export {
+  CLINIC_TZ,
+  claveDia,
+  diaDeSemana,
+  diasHabiles,
+  esHoy,
+  etiquetaDia,
+  etiquetaDiaCorta,
+  etiquetaFecha,
+  etiquetaFechaHora,
+  etiquetaRango,
+  hora,
+  inicioDeSemana,
+  instanteLocal,
+  rangoDeSemana,
+  semanaDesdeParametro,
+  sumarSemanas,
+} from "./time";
+export {
+  agruparPorDia,
+  armarAgenda,
+  citasDeSemana,
+  citasSinVincular,
+  reglasDeHorario,
+  type CitaDeSemana,
+  type DiaDeAgenda,
+  type Franja,
+  type ReglaHorario,
+} from "./queries";
