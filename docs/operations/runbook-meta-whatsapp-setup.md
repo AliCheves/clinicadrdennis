@@ -43,10 +43,20 @@ Pasos para dejar la cuenta lista, en el orden que evita cerrar puertas. El núme
 
 ## Decisión sobre el número real
 
-- [ ] **No registrar el número con el MCP de WhatsApp**: no admite coexistencia y lo saca de la app del teléfono. La coexistencia se hace con Embedded Signup como Tech Provider o mediante un BSP, y requiere el webhook de la Fase 1.
-- [ ] Ver si Meta ofrece el modo coexistencia para +503 durante el alta.
-- [ ] Si no, elegir entre un número nuevo para el bot o pasar el actual a la API con bandeja de respuestas en el panel.
-- [ ] No registrar el número real en la API hasta decidirlo.
+- [x] Decidido el 2026-11-25: opción C de [[0011-numero-whatsapp-coexistencia]]. El número pasa solo a la Cloud API y la secretaria responde desde la bandeja del panel.
+- [ ] No registrar el número hasta que el webhook (Fase 1) y la bandeja estén listos y probados. Mientras tanto sigue en la app WhatsApp Business del teléfono.
+- [ ] No conectar el número a Meta Business Suite, a una página de Facebook ni a ningún portafolio antes del corte.
+- [ ] Planificar el corte con el doctor y la secretaria:
+  - Fecha y hora fuera del horario de consulta.
+  - Respaldo de los chats del teléfono.
+  - Aviso a pacientes con conversaciones abiertas.
+  - Prueba de recepción y respuesta desde el panel inmediatamente después.
+- [ ] El día del corte, con autorización explícita de Alí:
+  1. Agregar el número a la cuenta de WhatsApp del portafolio.
+  2. Verificarlo con un código por SMS o llamada.
+  3. Registrarlo en la Cloud API.
+  4. Suscribir el webhook.
+  5. Agregar el método de pago.
 
 ## Google
 

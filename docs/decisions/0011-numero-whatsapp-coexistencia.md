@@ -1,58 +1,70 @@
 ---
 title: ADR-0011 — Qué hacer con el número de WhatsApp del consultorio
-status: propuesto
+status: aceptado
 fecha: 2026-10-20
 last_updated: 2026-11-25
 ---
 
 # ADR-0011 — Qué hacer con el número de WhatsApp del consultorio
 
-**Estado:** Propuesto
+**Estado:** Aceptado el 2026-11-25 por Alí (opción C)
 
 ## Contexto
 
-**Actualización 2026-11-25.** Alí confirmó que el número del consultorio, el de [[fase-0-cimientos]] § Datos del consultorio observados, será el de WhatsApp Business y **no es el número personal del doctor**. Hoy está activo en la app de WhatsApp en un teléfono.
+El doctor pidió que la secretaria responda desde el mismo número de WhatsApp cuando el bot no resuelve ([[respuestas-doctor-cuestionario]], pregunta 9). Registrar un número en la WhatsApp Cloud API lo saca de la app del celular, salvo que se use coexistencia.
 
-La documentación de Meta ("Onboard WhatsApp Business app users", conocida como coexistencia) exige:
+Hechos confirmados por Alí el 2026-11-25:
 
-1. El número en la app **WhatsApp Business** (v2.24.17 o superior), no en WhatsApp estándar.
-2. Alta mediante **Embedded Signup**, implementada por un **Solution Partner o Tech Provider**.
+- El número del consultorio, el de [[fase-0-cimientos]] § Datos del consultorio observados, será el de WhatsApp Business. **No es el número personal del doctor.**
+- Ya está en la app **WhatsApp Business** desde octubre de 2026 (aparece como negocio al verlo desde otra cuenta) y **se usa a diario con pacientes**.
+
+La documentación de Meta sobre coexistencia ("Onboard WhatsApp Business app users") exige:
+
+1. El número en la app WhatsApp Business, versión 2.24.17 o superior.
+2. Alta mediante Embedded Signup, implementada por un Solution Partner o Tech Provider.
 3. Un webhook ya funcionando.
+4. Que el número no esté agregado a ningún portafolio de negocio, página de Facebook ni bandeja de Meta Business Suite.
 
-Con coexistencia, los chats 1 a 1 se sincronizan entre la app y la API, con hasta 6 meses de historial. Se desactivan las listas de difusión, los mensajes temporales y la ubicación en vivo. Los dispositivos vinculados se desvinculan, y WhatsApp para Windows no es compatible. El límite es de 20 mensajes por segundo.
-
-El MCP de WhatsApp Business no admite coexistencia ni migración: registrar el número con él lo sacaría de la app. La documentación consultada no menciona restricciones por país; falta confirmarlo para +503 al intentarlo.
-
-Texto original:
-
-El número es WhatsApp estándar y el doctor acepta pasarlo a WhatsApp Business solo para pacientes. Además marcó que la secretaria responde desde el mismo número de WhatsApp, y no está claro si ese número es su número personal o una línea del consultorio. Registrarlo en la API lo saca de la app, salvo que Meta ofrezca el modo coexistencia para El Salvador, que no está confirmado.
+El MCP de WhatsApp Business no admite coexistencia ni migración: registrar el número con él lo saca de la app y no se puede deshacer desde ahí.
 
 ## Decisión
 
-Pendiente de decidir; parcialmente resuelta el 2026-11-25.
+**Opción C:**
 
-- El número del consultorio es el elegido.
-- No se registra en la API hasta tener el webhook de la Fase 1.
-- Mientras tanto se pasa a la app WhatsApp Business en el teléfono, respaldando antes los chats.
-- En la Fase 1 se elige entre:
-  - **(a)** que Alí se haga Tech Provider de Meta para su propia app;
-  - **(b)** un BSP que ofrezca coexistencia, lo que contradice en parte [[0005-whatsapp-cloud-api-directo]];
-  - **(c)** sin coexistencia, con la bandeja de respuestas en el panel.
+- El número del consultorio pasa **solo a la Cloud API**, sin coexistencia.
+- La secretaria responde a los pacientes desde una **bandeja de respuestas en el panel web**.
 
-Texto original: Primero pasar el número a WhatsApp Business. Luego ver si el alta ofrece coexistencia para +503. Si sí, el número sigue en la app y en la API. Si no, elegir entre un número nuevo para el bot o pasar el actual a la API y construir una bandeja de respuestas en el panel. Hasta decidir, no se registra el número real en la API.
+Momento del registro:
+
+- El número **no se registra en la API** hasta que estén listos y probados el webhook (Fase 1) y la bandeja del panel.
+- Hasta ese día sigue funcionando en la app WhatsApp Business del teléfono.
+- El corte se planifica con el doctor y la secretaria: fecha y hora, aviso, respaldo de chats y qué hacer con las conversaciones abiertas.
+- El registro lo autoriza Alí en ese momento (`AGENTS.md`, regla 8).
 
 ## Consecuencias
 
-Determina cómo responde la secretaria cuando el bot la deriva: con coexistencia puede usar la app del celular; sin ella, la bandeja del panel entra al MVP.
+- **La bandeja de respuestas entra al MVP.** Es parte del módulo `conversation` y del panel de la secretaria: ver conversaciones, responder dentro de la ventana de 24 horas y usar plantillas fuera de ella.
+- El día del corte el número deja de funcionar en el celular:
+  - Los chats del teléfono no pasan a la API.
+  - Las llamadas de voz y video, las listas de difusión y las etiquetas de la app dejan de estar disponibles en ese número.
+- Mientras no exista el bot, todo sigue igual que hoy.
+- Las pruebas de desarrollo usan el número de pruebas de Meta o teléfonos de Alí, nunca este número ni pacientes reales.
+- Hasta el corte no se conecta el número a Meta Business Suite ni a ningún portafolio fuera de este flujo.
 
 ## Alternativas
 
-Ninguna descartada todavía.
+- **A. Coexistencia con Alí como Tech Provider.** El número seguiría también en el celular. Descartada por ahora: exige la ruta de socio de Meta, con verificación y revisión de la app, y Embedded Signup propio.
+- **B. Coexistencia mediante un BSP.** Descartada: intermediario con costo, contra [[0005-whatsapp-cloud-api-directo]].
+- **Número nuevo solo para el bot.** No elegida: los pacientes ya conocen este número.
+
+Se puede reabrir con un ADR nuevo si la bandeja resulta insuficiente.
 
 ## Conexiones
 
 - [[0005-whatsapp-cloud-api-directo]]
 - [[fase-0-cimientos]]
 - [[whatsapp-integration]]
+- [[modules-overview]]
 - [[runbook-meta-whatsapp-setup]]
+- [[respuestas-doctor-cuestionario]]
 - [[README-decisiones]]

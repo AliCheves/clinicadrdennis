@@ -2,7 +2,7 @@
 title: Vault de arquitectura — Índice maestro
 status: en-curso
 scope: todo el proyecto
-last_updated: 2026-10-20
+last_updated: 2026-11-25
 verified_commit: n/a
 ---
 
@@ -141,7 +141,7 @@ TRANSVERSAL
 | Riesgo | Estado | Doc |
 |---|---|---|
 | Cita hecha a mano sin teléfono: no recibe recordatorios | Abierto: se mitiga con el formato del título y el panel "sin vincular" | [[google-calendar-sync]] |
-| Registrar el número real en la API lo saca de la app de WhatsApp | Abierto: decisión pendiente | [[0011-numero-whatsapp-coexistencia]] |
+| Registrar el número real en la API lo saca de la app de WhatsApp | Decidido (opción C): se registra solo cuando el webhook y la bandeja del panel estén listos, con un corte planificado | [[0011-numero-whatsapp-coexistencia]] |
 | Horarios y pacientes por día no cuadran con citas de 30 min (35 espacios por semana frente a 44 pacientes) | Abierto: preguntar al doctor | [[respuestas-doctor-cuestionario]] |
 | Verificación de Meta Business y aprobación de plantillas toman días | Abierto | [[runbook-meta-whatsapp-setup]] |
 | El doctor marcó "1 a 2 semanas" para la primera versión; el plan estima unas 4 semanas para el bot | Abierto: acordar el plazo | [[respuestas-doctor-cuestionario]] |
